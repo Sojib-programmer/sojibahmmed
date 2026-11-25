@@ -1,0 +1,399 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap');
+@import url("https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600;9..144,700&display=swap");
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  :root {
+    --background: 0 0% 2%;
+    --foreground: 220 15% 90%;
+    --card: 0 0% 5%;
+    --card-foreground: 220 15% 90%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 220 15% 90%;
+    --primary: 220 60% 55%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 8%;
+    --secondary-foreground: 220 15% 90%;
+    --muted: 0 0% 8%;
+    --muted-foreground: 220 10% 55%;
+    --accent: 0 0% 8%;
+    --accent-foreground: 220 15% 90%;
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 12%;
+    --input: 0 0% 12%;
+    --ring: 220 60% 55%;
+    --radius: 0.75rem;
+
+    --glass-bg: 0 0% 4% / 60%;
+    --glass-border: 0 0% 14% / 40%;
+
+    --sidebar-background: 0 0% 3%;
+    --sidebar-foreground: 220 15% 90%;
+    --sidebar-primary: 220 60% 55%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 8%;
+    --sidebar-accent-foreground: 220 15% 90%;
+    --sidebar-border: 0 0% 12%;
+    --sidebar-ring: 220 60% 55%;
+
+    --font-sans: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    --font-display: 'Fraunces', Georgia, serif;
+    --font-mono: ui-monospace, 'SFMono-Regular', Menlo, monospace;
+  }
+
+  .dark {
+    --background: 0 0% 2%;
+    --foreground: 220 15% 90%;
+    --card: 0 0% 5%;
+    --card-foreground: 220 15% 90%;
+    --popover: 0 0% 5%;
+    --popover-foreground: 220 15% 90%;
+    --primary: 220 60% 58%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 0 0% 8%;
+    --secondary-foreground: 220 15% 90%;
+    --muted: 0 0% 8%;
+    --muted-foreground: 220 10% 55%;
+    --accent: 0 0% 8%;
+    --accent-foreground: 220 15% 90%;
+    --destructive: 0 60% 50%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 0 0% 12%;
+    --input: 0 0% 14%;
+    --ring: 220 60% 58%;
+
+    --glass-bg: 0 0% 4% / 60%;
+    --glass-border: 0 0% 16% / 40%;
+
+    --sidebar: 0 0% 3%;
+    --sidebar-foreground: 220 15% 90%;
+    --sidebar-primary: 220 60% 58%;
+    --sidebar-primary-foreground: 0 0% 100%;
+    --sidebar-accent: 0 0% 8%;
+    --sidebar-accent-foreground: 220 15% 90%;
+    --sidebar-border: 0 0% 12%;
+    --sidebar-ring: 220 60% 58%;
+  }
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply bg-background text-foreground;
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+  }
+
+  .font-display {
+    font-family: 'Fraunces', Georgia, serif;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  * {
+    -webkit-tap-highlight-color: transparent;
+  }
+
+  img, video, canvas {
+    will-change: auto;
+    content-visibility: auto;
+  }
+}
+
+/* ── Clean Utilities ── */
+
+@layer components {
+  .glass {
+    background: hsl(0 0% 100% / 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsl(0 0% 100% / 0.06);
+  }
+
+  .glass-strong {
+    background: hsl(0 0% 100% / 0.05);
+    backdrop-filter: blur(32px);
+    -webkit-backdrop-filter: blur(32px);
+    border: 1px solid hsl(0 0% 100% / 0.08);
+  }
+
+  .glass-card {
+    background: hsl(0 0% 100% / 0.03);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid hsl(0 0% 100% / 0.06);
+    transition: border-color 0.3s ease, transform 0.3s ease;
+  }
+
+  .glass-card:hover {
+    border-color: hsl(var(--primary) / 0.2);
+    transform: translateY(-1px);
+  }
+
+  .hover-lift {
+    transition: transform 0.3s ease;
+  }
+
+  .hover-lift:hover {
+    transform: translateY(-2px);
+  }
+
+  .hover-glow {
+    transition: color 0.3s ease;
+  }
+
+  .hover-glow:hover {
+    color: hsl(var(--primary));
+  }
+
+  .hover-border-glow {
+    transition: border-color 0.3s ease;
+  }
+
+  .hover-border-glow:hover {
+    border-color: hsl(var(--primary) / 0.25);
+  }
+
+  .glow-line {
+    background: linear-gradient(
+      90deg,
+      transparent,
+      hsl(var(--primary) / 0.15),
+      transparent
+    );
+    height: 1px;
+  }
+
+  .input-glass {
+    background: hsl(var(--glass-bg));
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border: 1px solid hsl(var(--glass-border));
+    transition: border-color 0.3s ease;
+  }
+
+  .input-glass:focus {
+    border-color: hsl(var(--primary) / 0.4);
+    box-shadow: 0 0 0 2px hsl(var(--primary) / 0.08);
+  }
+
+  /* One formal button system: restrained primary + quiet outline secondary.
+     No glow, no shadow play. */
+  .btn-primary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 0.5rem;
+    background: hsl(var(--primary));
+    color: hsl(var(--primary-foreground));
+    padding: 0.75rem 1.5rem;
+    font-size: 0.875rem;
+    font-weight: 600;
+    line-height: 1;
+    transition: background-color 0.2s ease;
+  }
+
+  .btn-primary:hover {
+    background: hsl(var(--primary) / 0.9);
+  }
+
+  .btn-secondary {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    border-radius: 0.5rem;
+    border: 1px solid hsl(var(--border));
+    background: transparent;
+    color: hsl(var(--foreground));
+    padding: 0.75rem 1.25rem;
+    font-size: 0.875rem;
+    font-weight: 500;
+    line-height: 1;
+    transition: border-color 0.2s ease, background-color 0.2s ease;
+  }
+
+  .btn-secondary:hover {
+    border-color: hsl(var(--primary) / 0.4);
+    background: hsl(var(--primary) / 0.04);
+  }
+
+  /* Legacy class name kept as a plain transition so older pages still render
+     without glow. */
+  .btn-glow {
+    transition: background-color 0.2s ease, border-color 0.2s ease;
+  }
+}
+
+/* ── Animations ── */
+
+@keyframes fade-in-up {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fade-in-up 0.6s ease-out forwards;
+  opacity: 0;
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
+}
+
+.animate-float {
+  animation: float 8s ease-in-out infinite;
+}
+
+/* ── Craft pass: shell and hairlines ── */
+
+@layer components {
+  .hairline {
+    height: 1px;
+    background: linear-gradient(90deg, transparent, hsl(var(--border)), transparent);
+  }
+
+  .hairline-full {
+    height: 1px;
+    background: hsl(var(--border) / 0.75);
+  }
+}
+
+
+@media (prefers-reduced-motion: reduce) {
+  .animate-float {
+    animation: none;
+  }
+}
+
+/* Selection + scrollbar detail */
+::selection {
+  background: hsl(var(--primary) / 0.28);
+  color: hsl(var(--foreground));
+}
+
+* {
+  scrollbar-width: thin;
+  scrollbar-color: hsl(0 0% 100% / 0.12) transparent;
+}
+
+::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: hsl(0 0% 100% / 0.10);
+  border: 3px solid transparent;
+  background-clip: content-box;
+  border-radius: 999px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: hsl(var(--primary) / 0.35);
+  background-clip: content-box;
+}
+
+:focus-visible {
+  outline: 2px solid hsl(var(--primary) / 0.55);
+  outline-offset: 2px;
+}
+
+
+/* ── Fluid editorial type scale ── */
+
+@layer utilities {
+  .type-display {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(2.3rem, 1.1rem + 4.4vw, 4.6rem);
+    line-height: 1.03;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+
+  .type-h1 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(2rem, 1.1rem + 4.2vw, 3.25rem);
+    line-height: 1.08;
+    letter-spacing: -0.02em;
+    text-wrap: balance;
+  }
+
+  .type-h2 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(1.5rem, 1.05rem + 1.9vw, 2.15rem);
+    line-height: 1.16;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+  }
+
+  .type-h3 {
+    font-family: 'Fraunces', Georgia, serif;
+    font-size: clamp(1.125rem, 0.98rem + 0.7vw, 1.4rem);
+    line-height: 1.25;
+    letter-spacing: -0.01em;
+  }
+
+  .type-lead {
+    font-size: clamp(1rem, 0.95rem + 0.25vw, 1.15rem);
+    line-height: 1.62;
+    letter-spacing: -0.005em;
+    text-wrap: pretty;
+  }
+
+
+  .type-body {
+    font-size: clamp(0.94rem, 0.9rem + 0.2vw, 1rem);
+    line-height: 1.72;
+    text-wrap: pretty;
+  }
+
+  .type-stat {
+    font-size: clamp(1.65rem, 1.1rem + 2vw, 2.4rem);
+    line-height: 1;
+    letter-spacing: -0.02em;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .type-eyebrow {
+    font-family: 'Inter', ui-sans-serif, system-ui, sans-serif;
+    font-size: clamp(0.6rem, 0.56rem + 0.15vw, 0.7rem);
+    font-weight: 600;
+    line-height: 1.2;
+    letter-spacing: 0.24em;
+    text-transform: uppercase;
+  }
+
+  /* Consistent vertical rhythm for homepage sections */
+  .section-y {
+    padding-top: clamp(3.5rem, 2rem + 5vw, 6rem);
+    padding-bottom: clamp(3.5rem, 2rem + 5vw, 6rem);
+  }
+
+
+  .measure {
+    max-width: 62ch;
+  }
+}
